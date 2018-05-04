@@ -6,7 +6,8 @@ class App extends Component {
 
   state = {
     queryValue: '',
-    violations: []
+    violations: [],
+    countPerPage: 5
   }
 
   handleChange = (evt) => {
@@ -15,12 +16,14 @@ class App extends Component {
 
   handleClick = () => {
 
-    let query = '';
+    let query = [];
+    query.push('take=' + this.state.countPerPage);
     if (this.state.queryValue !== '') {
-      query += 'product=' + this.state.queryValue
+      query.push('product=' + this.state.queryValue);
     }
 
-    fetch('http://localhost:4001/api?' + query)
+
+    fetch('http://localhost:4001/api?' + query.join('&'))
       .then((resp) => resp.json())
       .then((data) => {
         console.log('data', data);
@@ -33,6 +36,8 @@ class App extends Component {
   render() {
     return (
       <div className="app">
+
+        <h1>CPSC Data</h1>
 
         <input className="query" value={this.state.queryValue} onChange={this.handleChange} placeholder="product name query" />
         <button onClick={this.handleClick}>Search</button>
