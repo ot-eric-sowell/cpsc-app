@@ -1,0 +1,12 @@
+.app {
+  margin: 0 auto;
+  max-width: 860px;
+  padding: 30px;
+  text-align: center;
+}
+
+input {
+  box-sizing: border-box;
+  padding: 6px 4px;
+  width: 100%;
+}

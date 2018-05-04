@@ -1,0 +1,13 @@
+.violation-table {
+  border-collapse: collapse;
+}
+
+.violation-table th {
+  background-color: #000;
+  color: #FFF;
+}
+
+.violation-table td, .violation-table th {
+  border: solid 1px #CCC;
+  padding: 8px 5px;
+}
