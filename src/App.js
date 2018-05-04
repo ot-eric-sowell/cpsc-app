@@ -33,6 +33,14 @@ class App extends Component {
       });
   }
 
+  handleCountPerPageChange = (evt) => {
+    const count = Number(evt.target.value) ? Number(evt.target.value) : 5;
+
+    this.setState({
+      countPerPage: count
+    });
+  }
+
   render() {
     return (
       <div className="app">
@@ -44,7 +52,7 @@ class App extends Component {
 
         <ViolationTable violations={this.state.violations} />
 
-
+        <p>Count per page: <input onChange={this.handleCountPerPageChange} /></p>
       </div>
     );
   }
