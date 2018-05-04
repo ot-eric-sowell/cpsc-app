@@ -6,7 +6,11 @@
 }
 
 input {
-  box-sizing: border-box;
   padding: 6px 4px;
+  width: 50px;  
+}
+
+input.query {
+  box-sizing: border-box;
   width: 100%;
 }

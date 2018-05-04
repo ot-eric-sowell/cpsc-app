@@ -14,7 +14,13 @@ class App extends Component {
   }
 
   handleClick = () => {
-    fetch('http://localhost:4001/api')
+
+    let query = '';
+    if (this.state.queryValue !== '') {
+      query += 'product=' + this.state.queryValue
+    }
+
+    fetch('http://localhost:4001/api?' + query)
       .then((resp) => resp.json())
       .then((data) => {
         console.log('data', data);
@@ -28,10 +34,11 @@ class App extends Component {
     return (
       <div className="app">
 
-        <input value={this.state.queryValue} onChange={this.handleChange} />
+        <input className="query" value={this.state.queryValue} onChange={this.handleChange} placeholder="product name query" />
         <button onClick={this.handleClick}>Search</button>
 
         <ViolationTable violations={this.state.violations} />
+
 
       </div>
     );
