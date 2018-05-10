@@ -8,7 +8,7 @@ class App extends Component {
   state = {
     queryValue: '',
     violations: [],
-    countPerPage: 5,
+    countPerPage: 10,
     countPerPageDisplay: 5,
     total: 0,
     currentIndex: 0
@@ -42,30 +42,6 @@ class App extends Component {
       total: apiResponseData.total
     });
 
-  }
-
-  handleCountPerPageChange = (evt) => {
-    const coerced = Number(evt.target.value);
-    const count = coerced ? coerced : 5;
-    console.log('coerced', coerced);
-
-    if (coerced > 0) {
-      console.log('updating display')
-      this.setState({
-        countPerPageDisplay: coerced
-      });
-    }
-    else {
-      this.setState({
-        countPerPageDisplay: ''
-      });
-    }
-
-    this.setState({
-      countPerPage: count
-    }, () => {
-      this.makeApiCall();
-    });
   }
 
   handleNext = () => {
@@ -108,8 +84,6 @@ class App extends Component {
         <ViolationTable violations={this.state.violations} />
 
         {pager}
-
-        <p>Count per page: <input onChange={this.handleCountPerPageChange} value={this.state.countPerPageDisplay} /></p>
       </div>
     );
   }
